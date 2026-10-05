@@ -148,8 +148,8 @@ select{font:inherit;color:var(--ink);background:var(--panel2);border:1px solid v
   <div class="grid">
     <div class="col">
       <section class="panel"><div class="phead"><h2>Party</h2><span class="hint">Click an icon to pick it, click again to clear</span></div><div id="slots"></div></section>
-      <section class="panel"><details id="tune"><summary>Adjust spec strength</summary>
-        <p class="note" style="margin-top:8px">Starting tiers come from a September 2026 beta tier list. Change them as tuning lands.</p>
+      <section class="panel"><div class="pbody" style="padding-bottom:0"><p class="note" id="tiernote">Tiers from MythicSim, saved 5 Oct 2026.</p></div><details id="tune"><summary>Adjust spec strength</summary>
+        <p class="note" style="margin-top:8px">Damage and tank tiers follow the <a href="https://mythicsim.com/wow-forever/tier-list" target="_blank" rel="noopener" style="color:var(--gold)">MythicSim tier list</a> and are re-checked every time this page opens. Anything you change here overrides it.</p>
         <div class="tiers" id="tiers"></div></details></section>
     </div>
     <div class="col">
@@ -170,7 +170,7 @@ select{font:inherit;color:var(--ink);background:var(--panel2);border:1px solid v
     </div>
   </div>
 
-  <p class="note">How it scores: each damage spec gets points from its tier, group buffs add points per teammate they help, and every pair of players loses points for sharing armor type, stat priority and weapon types. The numbers are a planning index, not simulated DPS. Race and class combinations and racials are from the WoW Forever beta (September 2026); buffs and armor rules follow Classic and may shift before launch. Icons are Blizzard game art. This is a fan tool, not affiliated with Blizzard.</p>
+  <p class="note">How it scores: each damage spec gets points from its MythicSim tier (a single-target boss sim), group buffs add points per teammate they help, and every pair of players loses points for sharing armor type, stat priority and weapon types. The numbers are a planning index, not simulated DPS. Race and class combinations and racials are from the WoW Forever beta (September 2026); buffs and armor rules follow Classic and may shift before launch. Icons are Blizzard game art. This is a fan tool, not affiliated with Blizzard.</p>
 </div>
 <div id="tip" hidden></div>
 
@@ -188,33 +188,33 @@ const CL = {
 };
 const S = (id,c,n,r,st,w,d,t)=>({id,c,n,r,st,w,d,t});
 const SPECS = [
-  S('arms','Warrior','Arms','D','str',['2h'],'m','B'),
+  S('arms','Warrior','Arms','D','str',['2h'],'m','A'),
   S('fury','Warrior','Fury','D','str',['1h'],'m','S'),
-  S('protw','Warrior','Protection','T','tank',['1h','shield'],'m','S'),
+  S('protw','Warrior','Protection','T','tank',['1h','shield'],'m','A'),
   S('holyp','Paladin','Holy','H','heal',['cwep','cshield'],'h','A'),
   S('protp','Paladin','Protection','T','tank',['1h','shield'],'m','A'),
-  S('ret','Paladin','Retribution','D','str',['2h'],'m','C'),
-  S('bm','Hunter','Beast Mastery','D','agi',['ranged','2hagi'],'r','A'),
+  S('ret','Paladin','Retribution','D','str',['2h'],'m','A'),
+  S('bm','Hunter','Beast Mastery','D','agi',['ranged','2hagi'],'r','B'),
   S('mm','Hunter','Marksmanship','D','agi',['ranged','2hagi'],'r','A'),
-  S('surv','Hunter','Survival','D','agi',['ranged','2hagi'],'r','B'),
-  S('assa','Rogue','Assassination','D','agi',['dagger'],'m','A'),
-  S('combat','Rogue','Combat','D','agi',['1h'],'m','S'),
+  S('surv','Hunter','Survival','D','agi',['ranged','2hagi'],'r','S'),
+  S('assa','Rogue','Assassination','D','agi',['dagger'],'m','B'),
+  S('combat','Rogue','Combat','D','agi',['1h'],'m','A'),
   S('sub','Rogue','Subtlety','D','agi',['dagger'],'m','B'),
   S('disc','Priest','Discipline','H','heal',['cwep','wand'],'h','A'),
   S('holypr','Priest','Holy','H','heal',['cwep','wand'],'h','S'),
   S('shadow','Priest','Shadow','D','spell',['cwep','wand'],'c','A'),
-  S('ele','Shaman','Elemental','D','spell',['cwep','cshield'],'c','A'),
+  S('ele','Shaman','Elemental','D','spell',['cwep','cshield'],'c','C'),
   S('enh','Shaman','Enhancement','D','agi',['1h'],'m','A'),
   S('restos','Shaman','Restoration','H','heal',['cwep','cshield'],'h','S'),
-  S('arcane','Mage','Arcane','D','spell',['cwep','wand'],'c','A'),
-  S('fire','Mage','Fire','D','spell',['cwep','wand'],'c','S'),
-  S('frost','Mage','Frost','D','spell',['cwep','wand'],'c','C'),
-  S('affl','Warlock','Affliction','D','spell',['cwep','wand'],'c','A'),
-  S('demo','Warlock','Demonology','D','spell',['cwep','wand'],'c','B'),
-  S('destro','Warlock','Destruction','D','spell',['cwep','wand'],'c','A'),
-  S('balance','Druid','Balance','D','spell',['cwep'],'c','B'),
-  S('bear','Druid','Feral (Bear)','T','agi',['2hagi'],'m','A'),
-  S('cat','Druid','Feral (Cat)','D','agi',['2hagi'],'m','B'),
+  S('arcane','Mage','Arcane','D','spell',['cwep','wand'],'c','B'),
+  S('fire','Mage','Fire','D','spell',['cwep','wand'],'c','B'),
+  S('frost','Mage','Frost','D','spell',['cwep','wand'],'c','B'),
+  S('affl','Warlock','Affliction','D','spell',['cwep','wand'],'c','B'),
+  S('demo','Warlock','Demonology','D','spell',['cwep','wand'],'c','A'),
+  S('destro','Warlock','Destruction','D','spell',['cwep','wand'],'c','B'),
+  S('balance','Druid','Balance','D','spell',['cwep'],'c','C'),
+  S('bear','Druid','Feral (Bear)','T','agi',['2hagi'],'m','B'),
+  S('cat','Druid','Feral (Cat)','D','agi',['2hagi'],'m','A'),
   S('restod','Druid','Restoration','H','heal',['cwep'],'h','A')
 ];
 const BY = Object.fromEntries(SPECS.map(s=>[s.id,s]));
@@ -428,6 +428,19 @@ document.addEventListener('focusin',ev=>{const el=ev.target.closest&&ev.target.c
 document.addEventListener('focusout',()=>{tip.hidden=true;});
 addEventListener('scroll',()=>{tip.hidden=true;},{passive:true});
 
+
+const SRC='https://mythicsim.com/wow-forever/tier-list';
+const TMAP={'Fury Warrior':'fury','Arms Warrior':'arms','Survival Hunter':'surv','Marksmanship Hunter':'mm','Beast Mastery Hunter':'bm','Retribution Paladin':'ret','Demonology Warlock':'demo','Affliction Warlock':'affl','Destruction Warlock':'destro','Enhancement Shaman':'enh','Elemental Shaman':'ele','Shadow Priest':'shadow','Combat Rogue':'combat','Assassination Rogue':'assa','Subtlety Rogue':'sub','Feral Druid':'cat','Balance Druid':'balance','Frost Mage':'frost','Fire Mage':'fire','Arcane Mage':'arcane','Protection Warrior T':'protw','Protection Paladin T':'protp'};
+function parseTiers(html){const tk=html.replace(/<script[\s\S]*?<\/script>/g,'').replace(/<style[\s\S]*?<\/style>/g,'').replace(/<[^>]+>/g,'|').split('|').map(x=>x.trim()).filter(Boolean);const out={};let tier='',tank=false,date='';for(let i=0;i<tk.length;i++){const x=tk[i];if(x==='Tank specs'&&/^Reference/.test(tk[i+1]||''))tank=true;if(/^Latest snapshot/.test(x))date=tk[i+1]||'';if(/^[SABCD]$/.test(x)&&/^\d+$/.test(tk[i+1]||''))tier=x;const m=x.match(/^(Warrior|Paladin|Hunter|Rogue|Priest|Shaman|Mage|Warlock|Druid) · [\d\/]+/);if(m&&tier){const n=tk[i-1];if(n==='Experimental')continue;const id=tank?(m[1]==='Druid'?'bear':TMAP[n+' '+m[1]+' T']):TMAP[n+' '+m[1]];if(id&&BY[id]&&!out[id])out[id]=tier;}}return {t:out,date};}
+async function syncTiers(){
+  const note=$('tiernote');
+  try{const r=await fetch(SRC,{cache:'no-store'}); if(!r.ok) throw 0; const p=parseTiers(await r.text());
+    if(Object.keys(p.t).length<15) throw 0; let ch=false;
+    for(const id in p.t) if(BY[id].t!==p.t[id]){BY[id].t=p.t[id];ch=true;}
+    note.textContent='Tiers checked against MythicSim just now'+(p.date?' (their snapshot: '+p.date+')':'')+'.';
+    if(ch){renderForm();renderOut();}
+  }catch(e){note.textContent='Could not reach MythicSim, so this uses the tiers saved on 5 Oct 2026.';}
+}
 const LS='forever-five-v1'; let docRef=null,writable=true,writing=false,dirty=false,timer=0;
 function setSync(m){$('sync').textContent={shared:'Shared roster. Changes sync to everyone who can edit.',readonly:'Showing the shared roster. Your changes stay on this device.',local:'Saved on this device.'}[m];}
 function enc(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
@@ -466,7 +479,7 @@ document.addEventListener('click',ev=>{
 try{const raw=localStorage.getItem(LS); if(raw) state=norm(JSON.parse(raw));}catch(e){}
 if(!HOSTED){ $('copy').hidden=false;
   try{const h=location.hash.slice(1); if(h) state=norm(JSON.parse(decodeURIComponent(escape(atob(h.replace(/-/g,'+').replace(/_/g,'/'))))));}catch(e){} }
-renderForm(); renderOut();
+renderForm(); renderOut(); syncTiers();
 (async()=>{
   const db=HOSTED?await window.claude.use('db'):null;
   if(!db) return;
