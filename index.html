@@ -275,6 +275,14 @@ select{font:inherit;color:var(--ink);background:var(--panel2);border:1px solid v
 .fcard dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:7px 14px;margin:0}.fcard dt{font-weight:700;color:var(--ink)}.fcard dd{margin:0}
 .kv{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}.kv span{background:#181818;box-shadow:inset 0 0 0 1px #333;border-radius:6px;padding:5px 9px;display:flex;flex-direction:column}
 .kv i{font-style:normal;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.kv b{color:var(--gold);font-size:12.5px}
+.pch{cursor:pointer}.pch:hover{background:#333}.chev{color:var(--muted);margin-left:4px}
+.cd{text-align:center;flex:0 1 auto}
+.cdl{font:700 11px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:4px}
+.cdn{display:flex;gap:8px;align-items:flex-start;justify-content:center}
+.cdn span{display:flex;flex-direction:column;align-items:center;min-width:46px}
+.cdn b{font:700 30px/1 var(--display);color:#f3eee2;font-variant-numeric:tabular-nums lining-nums;text-shadow:0 2px 0 #000}
+.cdn i{font:600 9px var(--body);font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin-top:4px}
+.cdn em{font:700 22px/1.25 var(--display);font-style:normal;color:var(--gold2)}
 #tip{position:fixed;z-index:50;max-width:280px;pointer-events:none;background:var(--tip-bg);border:1px solid var(--tip-line);border-radius:5px;padding:8px 10px;font-size:12px;color:var(--ink);box-shadow:0 6px 18px rgba(0,0,0,.6)}
 #tip .tt{font-weight:700;font-size:14px;color:var(--gold);margin-bottom:2px}
 #tip .tl{color:var(--ink2)}
@@ -287,6 +295,7 @@ select{font:inherit;color:var(--ink);background:var(--panel2);border:1px solid v
       <div><h1>Loot Goblinok</h1>
       <p class="sub">WoW Forever group planner: our comp, who rolls on what, professions, and the road to 60.</p></div>
     </div>
+    <div class="cd" id="cd"><div class="cdl" id="cdl">WoW Forever launches in</div><div class="cdn" id="cdn"><span><b id="cdD">--</b><i>Days</i></span><em>:</em><span><b id="cdH">--</b><i>Hours</i></span><em>:</em><span><b id="cdM">--</b><i>Minutes</i></span><em>:</em><span><b id="cdS">--</b><i>Seconds</i></span></div></div>
     <div class="pills">
       <span class="sync" id="sync">Saved on this device.</span>
       <button type="button" class="pill" id="copy" hidden>Copy link</button>
@@ -641,7 +650,7 @@ function renderCrew(t){
     const hs=holders(p),rows=CRAFT[p],lv=rows.filter(r=>r[0]!=='F'),fv=rows.filter(r=>r[0]==='F'),ready=lv.filter(r=>r[0]<=L),next=lv.filter(r=>r[0]>L),g=FEED[p],gh=g?holders(g):[];
     const row=r=>`<div class="cr ${r[0]==='F'?'fv':r[0]<=L?'on':'off'}"><span class="lvb">${r[0]==='F'?'Forever':'Lv '+r[0]}</span><div><div>${esc(r[1])}</div><div class="rc">${recip(r[2],r[0],hs)}</div></div></div>`;
     const key=p,isOpen=openP.has(key);
-    h+=`<div class="pc"><div class="pch"><i class="pbar" style="width:${(ready.length/lv.length*100).toFixed(0)}%"></i>${ico(PFI[p],p.slice(0,2),30,'#7a6a3a','rnd')}<div style="min-width:0"><div class="pct">${p}</div><div class="rc">${hs.map(person).join('')}${g?`<span>· materials: ${gh.length?g+' from '+gh.map(x=>esc(x.name)).join(', '):'<b style="color:#ff9a9a">no '+g+' in the group</b>'}</span>`:''}</div></div><span class="pcn"><b>${ready.length}</b> / ${lv.length}</span></div>
+    h+=`<div class="pc"><div class="pch" data-po="${key}" role="button" tabindex="0" aria-expanded="${isOpen}"><i class="pbar" style="width:${(ready.length/lv.length*100).toFixed(0)}%"></i>${ico(PFI[p],p.slice(0,2),30,'#7a6a3a','rnd')}<div style="min-width:0"><div class="pct">${p}</div><div class="rc">${hs.map(person).join('')}${g?`<span>· materials: ${gh.length?g+' from '+gh.map(x=>esc(x.name)).join(', '):'<b style="color:#ff9a9a">no '+g+' in the group</b>'}</span>`:''}</div></div><span class="pcn"><b>${ready.length}</b> / ${lv.length} <span class="chev">${isOpen?'▴':'▾'}</span></span></div>
       <div class="ltrack" aria-hidden="true"><div class="lf" style="width:${((L-1)/59*100).toFixed(1)}%"></div>${lv.map(r=>`<i class="dotm${r[0]<=L?' on':''}" style="left:${((r[0]-1)/59*100).toFixed(1)}%"></i>`).join('')}</div>
       ${isOpen?lv.map(row).join(''):ready.slice(-2).map(row).join('')+next.slice(0,2).map(row).join('')}${fv.map(row).join('')}
       <button type="button" class="pill plain sm" data-po="${key}" style="margin-top:8px">${isOpen?'Show fewer':'Show all '+lv.length+' by level'}</button></div>`;
@@ -758,6 +767,11 @@ async function syncTiers(){
     if(ch){renderForm();renderOut();}
   }catch(e){note.textContent='Could not reach MythicSim, so this uses the tiers saved on 7 Oct 2026.';}
 }
+const LAUNCH=Date.UTC(2026,10,4,23,0,0);
+function tick(){const d=LAUNCH-Date.now(); if(d<=0){$('cdl').textContent='WoW Forever is live';$('cdn').hidden=true;return;}
+  const s=Math.floor(d/1000),p=n=>String(n).padStart(2,'0');$('cdD').textContent=Math.floor(s/86400);$('cdH').textContent=p(Math.floor(s%86400/3600));$('cdM').textContent=p(Math.floor(s%3600/60));$('cdS').textContent=p(s%60);}
+tick();setInterval(tick,1000);
+document.addEventListener('keydown',ev=>{if((ev.key==='Enter'||ev.key===' ')&&ev.target.classList&&ev.target.classList.contains('pch')){ev.preventDefault();ev.target.click();}});
 const LS='loot-goblinok-v2';
 function setTab(t){if(!['crew','profs','loot','route'].includes(t))t='crew';document.body.dataset.tab=t;document.querySelectorAll('#tabs button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.tab===t));try{localStorage.setItem('lg-tab',t);}catch(e){}}
 {const TABI={crew:'achievement_guildperk_everybodysfriend',profs:'trade_blacksmithing',loot:'inv_box_01',route:'inv_misc_map_01'};document.querySelectorAll('#tabs button').forEach(b=>b.insertAdjacentHTML('afterbegin',ico(TABI[b.dataset.tab],'',26,'#555')));$('heroico').innerHTML=ico(TABI.crew,'',54,'#555','round');$('routeico').innerHTML=ico(TABI.route,'',54,'#555','round');document.querySelectorAll('[data-ic]').forEach(e=>e.innerHTML=ico(e.dataset.ic,'',30,'#555'));}
