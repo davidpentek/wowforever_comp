@@ -312,7 +312,7 @@ select{font:inherit;color:var(--ink);background:var(--panel2);border:1px solid v
   <div class="sec crew">
     <section class="panel"><div class="phead"><span class="shd"><span data-ic="inv_misc_groupneedmore"></span><span><h2>Party</h2><span class="hint">Click an icon to pick it, click again to clear</span></span></span></div><div id="slots" class="gx g3"></div></section>
     <section class="panel">
-      <div class="banner hero"><span id="heroico"></span><div><div class="t">The Group</div><div class="d" id="bannerd"></div></div><div class="meters" id="stats"></div></div>
+      <div class="banner hero"><span id="heroico"></span><div><div class="t">The Group</div><div class="d" id="bannerd"></div></div></div>
       <div id="warn"></div>
       <div id="team" class="cards"></div>
       <div class="pbody trio two" style="border-top:1px solid var(--line)">
@@ -320,9 +320,6 @@ select{font:inherit;color:var(--ink);background:var(--panel2);border:1px solid v
         <div><h3>Dungeon toolkit</h3><div class="chips" id="util"></div></div>
       </div>
     </section>
-    <section class="panel"><div class="pbody" style="padding-bottom:0"><p class="note" id="tiernote">Tiers from MythicSim, saved 7 Oct 2026.</p></div><details id="tune"><summary>Adjust spec strength</summary>
-        <p class="note" style="margin-top:8px">Damage and tank tiers follow the <a href="https://mythicsim.com/wow-forever/tier-list" target="_blank" rel="noopener" style="color:var(--gold)">MythicSim tier list</a> and are re-checked every time this page opens. Anything you change here overrides it.</p>
-        <div class="tiers" id="tiers"></div></details></section>
   </div>
 
   <div class="sec profs">
@@ -560,14 +557,13 @@ function renderForm(){
         <div class="row"><span class="lab">Race</span><div class="icons${s.race?'':' none'}">${races}</div></div>
         <div class="row"><span class="lab">Profs</span><div class="icons">${[0,1].map(k=>`<select class="psel" data-i="${i}" data-p="${k}" aria-label="Profession ${k+1}">${opt('','Suggest for me',s.profs[k])}${PROFS.map(p=>opt(p,p,s.profs[k])).join('')}</select>`).join('')}</div></div>
       </div></div>`;}).join('');
-  $('tiers').innerHTML=SPECS.filter(s=>s.r==='D').map(s=>`<div class="field"><label for="t_${s.id}">${sIco(s,20,'sm')} ${esc(s.n)} ${esc(s.c)}</label><select id="t_${s.id}" data-t="${s.id}">${Object.keys(TIER).map(t=>opt(t,t,state.tiers[s.id]||s.t)).join('')}</select></div>`).join('');
 }
 function unit(s,who,tag,own,race){
   return `<div class="rcard" style="--c:${CL[s.c].col}"><div class="rch"><span${specTip(s)}>${sIco(s,44,'rnd')}</span><div style="min-width:0"><div class="rcn">${esc(who)}</div><div class="rcs">${esc(s.n)} ${esc(s.c)}</div></div></div>
     <div class="rrow">${ico(ROI[s.r],s.r,22,'#333','sm')}<b>${ROLE[s.r]}</b><span class="bdg${own?'':' g'}">${tag}</span></div>
     <div class="rrow">${rIco(race.r,22,'sm')}<b>${esc(race.r)}</b><span class="bdg g">${race.own?'Picked':'Best fit'}</span></div>
     <div class="rnote">${esc(race.why)}</div>
-    <div class="rrow">${cIco(s.c,22,'sm')}<b>${armor(s)} · ${STAT[s.st]}</b>${s.r==='H'?'':`<span class="bdg">Tier ${state.tiers[s.id]||s.t}</span>`}</div></div>`;
+    <div class="rrow">${cIco(s.c,22,'sm')}<b>${armor(s)} · ${STAT[s.st]}</b></div></div>`;
 }
 let lastBest=null,lastAlts=[];
 function meter(l,v,max,cls,txt){return `<div class="meter"><span>${l}</span><div class="track"><div class="fill ${cls}" style="width:${Math.max(3,Math.min(100,v/max*100)).toFixed(0)}%"></div></div><span class="n">${txt}</span></div>`;}
@@ -582,7 +578,6 @@ function renderOut(){
   $('bannerd').textContent=(state.faction==='H'?'Horde':'Alliance')+' · level '+state.level+' · '+(open?open+' spec'+(open>1?'s':'')+' suggested':'all specs picked');
   $('team').innerHTML=t.map((s,i)=>{const sl=state.slots[i];
     return unit(s,pname(i),sl.spec?'Picked':sl.cls?'Spec suggested':'Filler',!!sl.spec,bestRace(s,sl.race));}).join('');
-  $('stats').innerHTML=meter('Damage index',e.dps,46,'',e.dps.toFixed(1))+meter('Loot overlap',e.loot,20,e.loot>10?'bad':'ok',e.loot.toFixed(1))+meter('Buffs helping damage',e.active.length,6,'',e.active.length);
   $('buffs').innerHTML=e.active.length?e.active.map(b=>`<span class="chip">${ico(BFI[b.n],'+',20,'#555','sm')}${esc(b.n)} <b>×${b.got}</b></span>`).join(''):'<span class="hint">None yet.</span>';
   $('util').innerHTML=Object.keys(UTIL).map(u=>`<span class="chip ${e.util[u]?'ok':'no'}">${ico(UTI[u],'',20,'#555','sm')}${UTIL[u]}${e.util[u]?'':' missing'}</span>`).join('');
   const ex={pair:[]};
@@ -759,7 +754,7 @@ const SRC='https://mythicsim.com/wow-forever/tier-list';
 const TMAP={'Fury Warrior':'fury','Arms Warrior':'arms','Survival Hunter':'surv','Marksmanship Hunter':'mm','Beast Mastery Hunter':'bm','Retribution Paladin':'ret','Demonology Warlock':'demo','Affliction Warlock':'affl','Destruction Warlock':'destro','Enhancement Shaman':'enh','Elemental Shaman':'ele','Shadow Priest':'shadow','Combat Rogue':'combat','Assassination Rogue':'assa','Subtlety Rogue':'sub','Feral Druid':'cat','Balance Druid':'balance','Frost Mage':'frost','Fire Mage':'fire','Arcane Mage':'arcane','Protection Warrior T':'protw','Protection Paladin T':'protp'};
 function parseTiers(html){const tk=html.replace(/<script[\s\S]*?<\/script>/g,'').replace(/<style[\s\S]*?<\/style>/g,'').replace(/<[^>]+>/g,'|').split('|').map(x=>x.trim()).filter(Boolean);const out={};let tier='',tank=false,date='';for(let i=0;i<tk.length;i++){const x=tk[i];if(x==='Tank specs'&&/^Reference/.test(tk[i+1]||''))tank=true;if(/^Latest snapshot/.test(x))date=tk[i+1]||'';if(/^[SABCD]$/.test(x)&&/^\d+$/.test(tk[i+1]||''))tier=x;const m=x.match(/^(Warrior|Paladin|Hunter|Rogue|Priest|Shaman|Mage|Warlock|Druid) · [\d\/]+/);if(m&&tier){const n=tk[i-1];if(n==='Experimental')continue;const id=tank?(m[1]==='Druid'?'bear':TMAP[n+' '+m[1]+' T']):TMAP[n+' '+m[1]];if(id&&BY[id]&&!out[id])out[id]=tier;}}return {t:out,date};}
 async function syncTiers(){
-  const note=$('tiernote');
+  const note={};
   try{const r=await fetch(SRC,{cache:'no-store'}); if(!r.ok) throw 0; const p=parseTiers(await r.text());
     if(Object.keys(p.t).length<15) throw 0; let ch=false;
     for(const id in p.t) if(BY[id].t!==p.t[id]){BY[id].t=p.t[id];ch=true;}
