@@ -1,17 +1,17 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style></head><body>
 <title>Loot Goblinok</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Marcellus+SC&family=Open+Sans:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Open+Sans:wght@400;600;700&display=swap">
 <style>
 /* Layout: toolbar, then party frames (who plays what) on the left and the recommended party, loot and runner-ups on the right; stacks on phones. Single dark look, on purpose: it is a game UI. */
 :root{
   color-scheme:dark;
-  --bg:#170e09; --panel:#21160f; --panel2:#2c1e14; --bar:#2a1b11; --line:#4d3927;
-  --ink:#f3eee2; --ink2:#d8c6ad; --muted:#a18d74;
-  --gold:#ffd100; --gold2:#c9a876; --green:#1eff00; --green2:#4fbf3a; --red:#ff4d4d; --blue:#58a6ff;
-  --tip-bg:#120b07; --tip-line:#8a6a40; --tint:#9a3324;
-  --display:Marcellus,Georgia,serif; --sc:"Marcellus SC",Marcellus,Georgia,serif; --body:"Open Sans",system-ui,"Segoe UI",Arial,sans-serif;
+  --bg:#121212; --panel:#1e1e1e; --panel2:#262626; --bar:#2b2b2b; --line:#3a3a3a;
+  --ink:#e8e8e8; --ink2:#bdbdbd; --muted:#8a8a8a;
+  --gold:#ffd100; --gold2:#c89b1a; --green:#1eff00; --green2:#4fbf3a; --red:#ff4d4d; --blue:#58a6ff;
+  --tip-bg:#0e0e10; --tip-line:#5a4a1e; --tint:#ff6a1f;
+  --display:Cinzel,Georgia,serif; --body:"Open Sans",system-ui,"Segoe UI",Arial,sans-serif;
 }
-body[data-f="A"]{--tint:#2f6fa3}
+body[data-f="A"]{--tint:#3b8cff}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14px;line-height:1.45;
   background-image:radial-gradient(900px 380px at 12% -80px,color-mix(in srgb,var(--tint) 16%,transparent),transparent 70%)}
@@ -179,39 +179,102 @@ select{font:inherit;color:var(--ink);background:var(--panel2);border:1px solid v
 @media (min-width:1150px){.g3{grid-template-columns:repeat(3,minmax(0,1fr))}.duo{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.g2{grid-template-columns:minmax(0,1fr)}}
 @media (min-width:1500px){.g2{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:1700px){#route.g3,#crafts.g3{grid-template-columns:repeat(4,minmax(0,1fr))}}
-/* WoW Forever skin: warm brown ground, cream type, tan trim, teal buttons, painted faction band */
-body{background:var(--bg);background-image:radial-gradient(1300px 560px at 40% -180px,color-mix(in srgb,var(--tint) 60%,transparent),transparent 70%),radial-gradient(900px 420px at 88% -120px,rgba(128,86,170,.28),transparent 70%);background-repeat:no-repeat}
-h1{font:400 clamp(28px,4vw,40px)/1.05 var(--display);font-variant:normal;letter-spacing:.02em;background:linear-gradient(#f3eee2,#e2c2ab);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 3px 6px rgba(0,0,0,.45))}
-.sub{color:var(--ink2);font-size:13px}
-.panel{background:linear-gradient(#25180f,#1d130c);border:1px solid #5a4330;border-radius:4px;box-shadow:0 0 0 1px #000,0 10px 26px rgba(0,0,0,.35)}
-.phead{background:linear-gradient(#3b2919,#2a1b11);border-bottom:2px solid var(--gold2);padding:10px 14px}
-h2{font:400 20px var(--display);letter-spacing:.03em;color:var(--ink)}
-h3{font:400 13px var(--sc);color:var(--gold2);letter-spacing:.09em;text-transform:none}
-.banner{border-top:3px solid var(--gold2);border-bottom:3px solid var(--gold2);padding:20px 16px;background:radial-gradient(120% 190% at 12% 0%,color-mix(in srgb,var(--tint) 90%,#fff 6%),transparent 62%),radial-gradient(90% 170% at 92% 100%,color-mix(in srgb,var(--tint) 55%,#000),transparent 72%),color-mix(in srgb,var(--tint) 50%,#0b1722)}
-.panel>.banner:first-child{border-top:0}
-.banner .t{font:400 30px/1.1 var(--display);font-variant:normal;letter-spacing:.02em;color:#f7f2e7;text-shadow:0 3px 8px rgba(0,0,0,.5)}
-.banner .d{color:#f3eee2;opacity:.88;font-size:13px;max-width:90ch}
-.pill{font:600 13px var(--body);color:#f7f2e7;background:linear-gradient(#25838f,#17606b);border-radius:3px;padding:9px 16px;box-shadow:inset 0 0 0 1px #5fb0b8,0 2px 6px rgba(0,0,0,.4)}
-.pill:hover{box-shadow:inset 0 0 0 1px #a9e6eb,0 0 12px rgba(95,176,184,.45)}
-.pill.plain{background:linear-gradient(#3b2919,#2a1b11);box-shadow:inset 0 0 0 1px #6b5138;color:var(--ink)}
-.pill.sm{padding:4px 10px;font-size:12px}
-.topbar{background:linear-gradient(#1d120b,#170e09);border-bottom:2px solid var(--gold2);padding:10px 0}
-.tabs button{display:inline-flex;align-items:center;gap:10px;font:400 16px var(--sc);letter-spacing:.05em;text-transform:none;padding:5px 16px 5px 5px;background:linear-gradient(#312116,#23170f);border:1px solid #5a4330;color:var(--ink2);border-radius:4px}
-.tabs button[aria-pressed=true]{background:linear-gradient(#25838f,#155560);border-color:#8fd0d6;color:#fff;box-shadow:0 0 14px rgba(95,176,184,.35)}
-.tabs button .ico{--s:34px}
-.seg button{background:linear-gradient(#312116,#23170f);border-color:#5a4330;color:var(--ink2)}
-.seg button[aria-pressed=true]{background:linear-gradient(#25838f,#155560);border-color:#8fd0d6;color:#fff;box-shadow:none}
-.uname,.pct,.sname{font-weight:400;font-size:20px;letter-spacing:.01em}
-.pct,.sname{color:var(--ink)}.step.d .sname{color:#ffc9a3}
-.pn{font:400 13px var(--sc);letter-spacing:.08em;text-transform:none;color:var(--gold2)}
-.fbody input,.noterow input{background:#120a06;border-color:#5a4330}
-select{background:#2c1e14;border-color:#5a4330}
-.chip{background:#2c1e14}.track{background:#0e0805}
-.unit{background:linear-gradient(90deg,color-mix(in srgb,var(--c) 16%,transparent),transparent 60%)}
-.emblem{box-shadow:0 0 0 2px #000,0 0 0 4px var(--gold2),0 0 0 5px #3a2a14,0 6px 14px rgba(0,0,0,.7)}
-.ico{box-shadow:0 0 0 1px #000,0 0 0 2px #6b5138}
-.ql li::before{font-weight:400}
-.note a{color:var(--gold2)}
+/* talentsforever feel: grey panels, gold Cinzel, class-tab chips, node-style icons with rank badges */
+.tabs button{display:inline-flex;align-items:center;gap:8px;font:600 14px var(--body);letter-spacing:0;text-transform:none;padding:5px 14px 5px 5px;background:var(--panel2);border:1px solid transparent;border-radius:6px;color:var(--ink)}
+.tabs button:hover{background:#303030;border-color:transparent}
+.tabs button[aria-pressed=true]{background:#2e2a1f;border-color:var(--gold2);color:#fff;box-shadow:none}
+.tabs button .ico{--s:26px;border-radius:4px;box-shadow:0 0 0 1px #000}
+.topbar{border-bottom:1px solid var(--line)}
+.seg button{font:600 14px var(--body);background:#3a3a3a;border:0;color:#fff;border-radius:4px;padding:5px 10px}
+.seg button:hover{background:#454545}
+.seg button[aria-pressed=true]{background:#2e2a1f;color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold2)}
+.pill.sm{font:600 12px var(--body);border-radius:4px;background:#2e2a1f;color:var(--gold);box-shadow:inset 0 0 0 1px var(--gold2);padding:4px 10px;transform:none}
+.pill.plain.sm{background:#333;color:var(--ink2);box-shadow:inset 0 0 0 1px #444}
+.pill.sm:hover{transform:none;filter:brightness(1.15)}
+.banner.hero{display:grid;grid-template-columns:auto minmax(0,1fr) minmax(240px,400px);gap:16px;align-items:center;padding:14px 16px;border:0;border-bottom:1px solid var(--line);
+  background:radial-gradient(55% 170% at 28% 110%,rgba(255,120,20,.30),transparent 70%),radial-gradient(45% 150% at 72% -10%,rgba(255,190,60,.13),transparent 70%),linear-gradient(#17120c,#0c0907)}
+.banner.hero .meter{grid-template-columns:minmax(0,120px) minmax(0,1fr) 40px}
+@media (max-width:760px){.banner.hero{grid-template-columns:auto minmax(0,1fr)}.banner.hero .meters{grid-column:1/-1}}
+@media (min-width:900px){.trio.two{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.pc{padding:0;background:radial-gradient(120% 55% at 50% 0%,rgba(255,138,31,.09),transparent 70%),#151515}
+.pc>*:not(.pch){margin-left:12px;margin-right:12px}
+.pc>:first-child:not(.pch){margin-top:12px}.pc>:last-child{margin-bottom:12px}
+.pch{position:relative;background:var(--bar);padding:8px 12px;border-bottom:3px solid #111;gap:10px}
+.pbar{position:absolute;left:0;bottom:-3px;height:3px;background:linear-gradient(90deg,var(--gold2),var(--gold))}
+.ico.rnd{border-radius:50%;box-shadow:0 0 0 1px #000,0 0 0 2px var(--gold2)}
+.pct{font:700 15px/1.2 var(--body);letter-spacing:0;color:#fff}
+.pcn{font-size:14px;font-weight:700;color:var(--ink2);font-variant-numeric:tabular-nums}.pcn b{color:var(--gold);font-size:15px}
+.ltrack{margin:14px 17px 8px!important}
+.node{position:relative;display:inline-block;line-height:0}
+.node .ico{filter:grayscale(1) brightness(.55)}
+.node.on .ico{filter:none;box-shadow:0 0 0 1px #000,0 0 0 2px var(--green2)}
+.node.mx .ico{filter:none;box-shadow:0 0 0 1px #000,0 0 0 2px var(--gold),0 0 10px rgba(255,209,0,.4)}
+.nb{position:absolute;right:-7px;bottom:-7px;font:700 10px/1.3 var(--body);padding:1px 4px;border-radius:3px;background:rgba(0,0,0,.88);color:var(--muted);box-shadow:0 0 0 1px #000;white-space:nowrap;font-variant-numeric:tabular-nums}
+.node.on .nb{color:var(--green)}.node.mx .nb{color:var(--gold)}
+.step{background:#161616}.step.done{opacity:1}.step.done .sname,.step.done .sw{color:var(--muted)}
+.sname{font:700 15px/1.3 var(--body);letter-spacing:0;color:#fff;margin-top:2px}.step.d .sname{color:#fff}
+.step.now,.step.d.now{background:linear-gradient(90deg,rgba(30,255,0,.06),transparent 55%),#161616}
+/* patterns from the full Talents Forever page: racial-style cards, the spellbook, footer cards */
+.wrap{max-width:1500px}
+.shd{display:inline-flex;gap:10px;align-items:center;min-width:0}.shd>span:last-child{display:flex;flex-direction:column;min-width:0}
+.shd .ico{border-radius:6px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:12px}
+@media (min-width:760px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1300px){.cards{grid-template-columns:repeat(6,minmax(0,1fr))}}
+@media (max-width:460px){.cards{grid-template-columns:minmax(0,1fr)}}
+.rcard{background:#181818;box-shadow:inset 0 0 0 1px #333;border-radius:8px;overflow:hidden;padding-bottom:8px;min-width:0}
+.rch{display:flex;gap:10px;align-items:center;padding:10px;margin-bottom:6px;background:linear-gradient(180deg,color-mix(in srgb,var(--c) 38%,#151515),color-mix(in srgb,var(--c) 10%,#181818));border-bottom:1px solid #000}
+.rcn{font:700 16px/1.15 var(--display);font-variant:small-caps;letter-spacing:.04em;color:color-mix(in srgb,var(--c) 70%,#fff);text-shadow:0 1px 0 #000;overflow-wrap:anywhere}
+.rcs{font-size:11.5px;color:var(--ink2)}
+.rrow{display:flex;gap:8px;align-items:center;padding:4px 10px;font-size:12.5px;min-width:0}
+.rrow b{font-weight:700;color:var(--ink);min-width:0;flex:1}
+.rrow.off b{color:var(--muted);font-weight:600}
+.rnote{padding:0 10px 4px 40px;font-size:11.5px;color:var(--muted)}
+.bdg{font:700 10px/1.4 var(--body);letter-spacing:.04em;text-transform:uppercase;padding:1px 6px;border-radius:3px;background:var(--gold);color:#111;white-space:nowrap}
+.bdg.g{background:#2a2a2a;color:var(--ink2);box-shadow:inset 0 0 0 1px #444}
+.dt{width:8px;height:8px;border-radius:50%;background:#3a3a3a;flex:none;margin:0 7px}.dt.on{background:var(--green);box-shadow:0 0 6px rgba(30,255,0,.6)}
+#rcount b{color:var(--ink);font-size:14px}
+.book{position:relative;max-width:1080px;margin:18px auto 22px;display:grid;grid-template-columns:minmax(0,1fr);background:#3b2413;border-radius:14px;padding:12px;box-shadow:0 0 0 2px #1d1108,inset 0 0 0 1px #6b4a2a,0 14px 34px rgba(0,0,0,.6)}
+.page{background:linear-gradient(90deg,#d6bb85,#e6d09f 14%,#e2ca97 86%,#cfb27c);color:#3f280e;padding:20px 22px;min-width:0}
+.page.left{border-radius:8px 8px 0 0}.page.right{border-radius:0 0 8px 8px;border-top:1px solid rgba(63,40,14,.3);display:flex;flex-direction:column}
+@media (min-width:900px){.book{grid-template-columns:minmax(0,1fr) minmax(0,1fr);margin-right:auto}.page{min-height:560px}
+  .page.left{border-radius:8px 0 0 8px;box-shadow:inset -22px 0 26px -20px rgba(60,35,10,.6)}
+  .page.right{border-radius:0 8px 8px 0;border-top:0;box-shadow:inset 22px 0 26px -20px rgba(60,35,10,.6)}}
+.pgtitle{font:700 22px/1.15 var(--display);font-variant:small-caps;letter-spacing:.05em;color:#3f280e}
+.pgsub{font-size:11px;color:#7a5c36;margin:3px 0 10px;padding-bottom:8px;border-bottom:1px solid rgba(63,40,14,.28)}
+.book .ico{box-shadow:0 0 0 1px #1d1108,0 0 0 2px #6b4a2a;border-radius:6px}
+.entry{display:grid;grid-template-columns:36px minmax(0,1fr) 18px;gap:11px;align-items:center;width:100%;text-align:left;background:none;border:0;padding:5px 6px;border-radius:6px;cursor:pointer;color:inherit;font:inherit}
+.entry:hover{background:rgba(63,40,14,.09)}
+.entry[aria-pressed=true]{background:rgba(63,40,14,.16);box-shadow:inset 0 0 0 1px rgba(63,40,14,.4)}
+.entry.dn .ico{filter:grayscale(.7) brightness(.9)}.entry.dn .en{text-decoration:line-through;opacity:.65}
+.en{display:block;font:700 13.5px/1.2 var(--display);font-variant:small-caps;letter-spacing:.04em}
+.et{display:block;font-size:11px;color:#7a5c36}
+.lc{display:inline-flex;gap:3px;margin-top:2px}
+.lc i{font:700 10px/1.5 var(--body);font-style:normal;padding:0 6px;border-radius:8px;background:rgba(63,40,14,.15);color:#6b4a2a;font-variant-numeric:tabular-nums}
+.lc i.at{background:#2a1a0a;color:#f0dfb5}
+.ek{font-weight:700;color:#2f6b1f;text-align:center}
+.dhead{display:flex;gap:14px;align-items:center}
+.dw{font-size:13.5px;line-height:1.5;color:#4d3415;max-width:60ch}
+.bqh{font:700 12px var(--display);font-variant:small-caps;letter-spacing:.08em;color:#7a5c36;margin:16px 0 6px}
+.bq{margin:0;padding:0;list-style:none;display:grid;gap:7px;font-size:13.5px;line-height:1.4;max-width:60ch}
+.bq li{padding-left:20px;position:relative}.bq li::before{content:'!';position:absolute;left:5px;top:-1px;color:#a86a00;font:700 16px var(--display)}
+.bfoot{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:auto;padding-top:18px}
+.bkbtn{font:700 13px var(--body);padding:8px 14px;border-radius:5px;border:0;cursor:pointer;background:#2a1a0a;color:#f0dfb5;box-shadow:inset 0 0 0 1px #6b4a2a}
+.bkbtn:hover:not(:disabled){background:#3a2512}.bkbtn.on{background:#2f6b1f;color:#fff;box-shadow:none}
+.bkbtn.sq{padding:8px 11px;color:var(--gold)}.bkbtn:disabled{opacity:.35;cursor:default}
+.pager{display:inline-flex;gap:10px;align-items:center;font-size:11px;color:#7a5c36;text-align:center}.pager b{font:700 13px var(--display);font-variant:small-caps;color:#3f280e;letter-spacing:.05em}
+.btabs{display:none}
+@media (min-width:1240px){.btabs{display:flex;flex-direction:column;gap:8px;position:absolute;left:100%;top:26px;margin-left:2px}
+  .btabs button{padding:5px 7px 5px 5px;border:0;cursor:pointer;background:#3b2413;border-radius:0 8px 8px 0;box-shadow:inset 0 0 0 1px #6b4a2a;line-height:0;filter:grayscale(.6) brightness(.7)}
+  .btabs button:hover{filter:none}.btabs button[aria-pressed=true]{filter:none;box-shadow:inset 0 0 0 1px var(--gold2),0 0 10px rgba(255,209,0,.25)}}
+.foot{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
+@media (min-width:900px){.foot{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.fcard{padding:14px 16px;font-size:12.5px;color:var(--ink2)}
+.fcard h4{font:700 14px var(--display);font-variant:small-caps;letter-spacing:.06em;color:#ffd75e;margin:0 0 10px}
+.fcard p{margin:0 0 8px}.fcard a{color:var(--gold)}.fcard .mut{color:var(--muted)}
+.fcard dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:7px 14px;margin:0}.fcard dt{font-weight:700;color:var(--ink)}.fcard dd{margin:0}
+.kv{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}.kv span{background:#181818;box-shadow:inset 0 0 0 1px #333;border-radius:6px;padding:5px 9px;display:flex;flex-direction:column}
+.kv i{font-style:normal;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}.kv b{color:var(--gold);font-size:12.5px}
 #tip{position:fixed;z-index:50;max-width:280px;pointer-events:none;background:var(--tip-bg);border:1px solid var(--tip-line);border-radius:5px;padding:8px 10px;font-size:12px;color:var(--ink);box-shadow:0 6px 18px rgba(0,0,0,.6)}
 #tip .tt{font-weight:700;font-size:14px;color:var(--gold);margin-bottom:2px}
 #tip .tl{color:var(--ink2)}
@@ -238,13 +301,12 @@ select{background:#2c1e14;border-color:#5a4330}
   </div>
 
   <div class="sec crew">
-    <section class="panel"><div class="phead"><h2>Party</h2><span class="hint">Click an icon to pick it, click again to clear</span></div><div id="slots" class="gx g3"></div></section>
+    <section class="panel"><div class="phead"><span class="shd"><span data-ic="inv_misc_groupneedmore"></span><span><h2>Party</h2><span class="hint">Click an icon to pick it, click again to clear</span></span></span></div><div id="slots" class="gx g3"></div></section>
     <section class="panel">
-      <div class="banner"><div><div class="t">The Group</div><div class="d" id="bannerd"></div></div></div>
+      <div class="banner hero"><span id="heroico"></span><div><div class="t">The Group</div><div class="d" id="bannerd"></div></div><div class="meters" id="stats"></div></div>
       <div id="warn"></div>
-      <div id="team" class="gx g3"></div>
-      <div class="pbody trio" style="border-top:1px solid var(--line)">
-        <div><h3>Scores</h3><div class="meters" id="stats"></div></div>
+      <div id="team" class="cards"></div>
+      <div class="pbody trio two" style="border-top:1px solid var(--line)">
         <div><h3>Group buffs in play</h3><div class="chips" id="buffs"></div></div>
         <div><h3>Dungeon toolkit</h3><div class="chips" id="util"></div></div>
       </div>
@@ -255,20 +317,20 @@ select{background:#2c1e14;border-color:#5a4330}
   </div>
 
   <div class="sec profs">
-    <section class="panel"><div class="phead"><h2>Professions and crafting</h2><span class="hint" id="crafth"></span></div><div id="crafts" class="gx g3"></div></section>
+    <section class="panel"><div class="phead"><span class="shd"><span data-ic="trade_blacksmithing"></span><span><h2>Professions and crafting</h2><span class="hint">What each of you can make, from which level, and for whom</span></span></span><span class="hint" id="crafth"></span></div><div id="crafts" class="gx g3"></div></section>
   </div>
 
   <div class="sec loot">
-    <div class="duo">
-      <section class="panel"><div class="phead"><h2>Buffs and tools by level</h2><span class="hint" id="buffh"></span></div><div id="lvbuffs" class="gx g2"></div></section>
-      <section class="panel"><div class="phead"><h2>Who rolls on what</h2></div><div class="tablewrap"><table id="loot"></table></div>
+    <div class="sec" style="display:flex">
+      <section class="panel"><div class="phead"><span class="shd"><span data-ic="spell_holy_wordfortitude"></span><span><h2>Buffs and tools by level</h2><span class="hint">Lights up as the group level passes each spell</span></span></span><span class="hint" id="buffh"></span></div><div id="lvbuffs" class="cards"></div></section>
+      <section class="panel"><div class="phead"><span class="shd"><span data-ic="inv_box_01"></span><span><h2>Who rolls on what</h2><span class="hint">Drop types and who wants them</span></span></span></div><div class="tablewrap"><table id="loot"></table></div>
         <div class="pbody"><p class="note">Rings, necks, cloaks and trinkets are shared by everyone with the same stat priority, so two casters still compete there even in different armor.</p></div></section>
     </div>
   </div>
 
   <div class="sec route">
     <section class="panel">
-    <div class="banner"><div><div class="t">Road to 60</div><div class="d">From level 10 together: zones, quests, and every dungeon once. Dungeons take five, so one of you sits out or swaps in each run.</div></div></div>
+    <div class="banner hero"><span id="routeico"></span><div><div class="t">Road to 60</div><div class="d">From level 10 together: zones, quests, and every dungeon once. Dungeons take five, so one of you sits out or swaps in each run.</div></div></div>
     <div class="pbody" style="gap:10px;border-bottom:1px solid var(--line)">
       <div class="meter" style="grid-template-columns:minmax(0,1fr) auto"><div class="track"><div class="fill ok" id="rprog" style="width:0"></div></div><span id="rcount" class="hint"></span></div>
       <div class="seg" id="chaps" style="flex-wrap:wrap"></div>
@@ -277,7 +339,7 @@ select{background:#2c1e14;border-color:#5a4330}
   </section>
   </div>
 
-  <p class="note">How it scores: each damage spec gets points from its MythicSim tier (a single-target boss sim), group buffs add points per teammate they help, and every pair of players loses points for sharing armor type, stat priority and weapon types. The numbers are a planning index, not simulated DPS. Race and class combinations and racials are from the WoW Forever beta (September 2026); buffs and armor rules follow Classic and may shift before launch. Icons are Blizzard game art. Crafts, spell levels, zones and quests follow Classic, with WoW Forever's announced changes and nine new dungeons marked; expect some to move during beta. This is a fan tool, not affiliated with Blizzard.</p>
+
 </div>
 <div id="tip" hidden></div>
 
@@ -492,11 +554,11 @@ function renderForm(){
   $('tiers').innerHTML=SPECS.filter(s=>s.r==='D').map(s=>`<div class="field"><label for="t_${s.id}">${sIco(s,20,'sm')} ${esc(s.n)} ${esc(s.c)}</label><select id="t_${s.id}" data-t="${s.id}">${Object.keys(TIER).map(t=>opt(t,t,state.tiers[s.id]||s.t)).join('')}</select></div>`).join('');
 }
 function unit(s,who,tag,own,race){
-  return `<div class="unit" style="--c:${CL[s.c].col}"><span${specTip(s)}>${sIco(s,48)}</span><div style="min-width:0">
-    <div class="who">${ico(ROI[s.r],s.r,16,'#333','sm')}<span class="rolet ${s.r}">${ROLE[s.r]}</span><span>${esc(who)}</span><span class="tag${own?' own':''}">${tag}</span></div>
-    <div class="uname">${esc(s.n)} ${esc(s.c)}</div>
-    <div class="race">${rIco(race.r,20,'sm')}<span><b>${esc(race.r)}</b>${race.own?'':' recommended'} · ${esc(race.why)}</span></div>
-    <div class="meta">${armor(s)} · ${STAT[s.st]}${s.r==='H'?'':' · MythicSim tier '+(state.tiers[s.id]||s.t)}</div></div></div>`;
+  return `<div class="rcard" style="--c:${CL[s.c].col}"><div class="rch"><span${specTip(s)}>${sIco(s,44,'rnd')}</span><div style="min-width:0"><div class="rcn">${esc(who)}</div><div class="rcs">${esc(s.n)} ${esc(s.c)}</div></div></div>
+    <div class="rrow">${ico(ROI[s.r],s.r,22,'#333','sm')}<b>${ROLE[s.r]}</b><span class="bdg${own?'':' g'}">${tag}</span></div>
+    <div class="rrow">${rIco(race.r,22,'sm')}<b>${esc(race.r)}</b><span class="bdg g">${race.own?'Picked':'Best fit'}</span></div>
+    <div class="rnote">${esc(race.why)}</div>
+    <div class="rrow">${cIco(s.c,22,'sm')}<b>${armor(s)} · ${STAT[s.st]}</b>${s.r==='H'?'':`<span class="bdg">Tier ${state.tiers[s.id]||s.t}</span>`}</div></div>`;
 }
 let lastBest=null,lastAlts=[];
 function meter(l,v,max,cls,txt){return `<div class="meter"><span>${l}</span><div class="track"><div class="fill ${cls}" style="width:${Math.max(3,Math.min(100,v/max*100)).toFixed(0)}%"></div></div><span class="n">${txt}</span></div>`;}
@@ -579,7 +641,7 @@ function renderCrew(t){
     const hs=holders(p),rows=CRAFT[p],lv=rows.filter(r=>r[0]!=='F'),fv=rows.filter(r=>r[0]==='F'),ready=lv.filter(r=>r[0]<=L),next=lv.filter(r=>r[0]>L),g=FEED[p],gh=g?holders(g):[];
     const row=r=>`<div class="cr ${r[0]==='F'?'fv':r[0]<=L?'on':'off'}"><span class="lvb">${r[0]==='F'?'Forever':'Lv '+r[0]}</span><div><div>${esc(r[1])}</div><div class="rc">${recip(r[2],r[0],hs)}</div></div></div>`;
     const key=p,isOpen=openP.has(key);
-    h+=`<div class="pc"><div class="pch">${ico(PFI[p],p.slice(0,2),40,'#7a6a3a')}<div style="min-width:0"><div class="pct">${p}</div><div class="rc">${hs.map(person).join('')}${g?`<span>· materials: ${gh.length?g+' from '+gh.map(x=>esc(x.name)).join(', '):'<b style="color:#ff9a9a">no '+g+' in the group</b>'}</span>`:''}</div></div><span class="pcn"><b>${ready.length}</b> of ${lv.length} ready</span></div>
+    h+=`<div class="pc"><div class="pch"><i class="pbar" style="width:${(ready.length/lv.length*100).toFixed(0)}%"></i>${ico(PFI[p],p.slice(0,2),30,'#7a6a3a','rnd')}<div style="min-width:0"><div class="pct">${p}</div><div class="rc">${hs.map(person).join('')}${g?`<span>· materials: ${gh.length?g+' from '+gh.map(x=>esc(x.name)).join(', '):'<b style="color:#ff9a9a">no '+g+' in the group</b>'}</span>`:''}</div></div><span class="pcn"><b>${ready.length}</b> / ${lv.length}</span></div>
       <div class="ltrack" aria-hidden="true"><div class="lf" style="width:${((L-1)/59*100).toFixed(1)}%"></div>${lv.map(r=>`<i class="dotm${r[0]<=L?' on':''}" style="left:${((r[0]-1)/59*100).toFixed(1)}%"></i>`).join('')}</div>
       ${isOpen?lv.map(row).join(''):ready.slice(-2).map(row).join('')+next.slice(0,2).map(row).join('')}${fv.map(row).join('')}
       <button type="button" class="pill plain sm" data-po="${key}" style="margin-top:8px">${isOpen?'Show fewer':'Show all '+lv.length+' by level'}</button></div>`;
@@ -591,7 +653,7 @@ function renderCrew(t){
   const next=[];
   $('lvbuffs').innerHTML=ms.map(m=>{const k=KIT[m.s.c].filter(x=>!x[2]||x[2].includes(m.s.id));
     k.forEach(x=>{if(x[0]>L)next.push([x[0],x[1],m.name]);});
-    return `<div class="cm"><div class="cmh">${cIco(m.s.c,22,'sm')}<b style="color:${CL[m.s.c].col}">${esc(m.name)}</b><span class="hint">${k.filter(x=>x[0]<=L).length} of ${k.length} online</span></div><div class="chips">${k.map(x=>`<span class="chip ${x[0]<=L?'ok lit':'no'}">${esc(x[1])}${x[0]<=L?'':' · Lv '+x[0]}</span>`).join('')}</div></div>`;}).join('');
+    return `<div class="rcard" style="--c:${CL[m.s.c].col}"><div class="rch">${cIco(m.s.c,36,'rnd')}<div style="min-width:0"><div class="rcn">${esc(m.name)}</div><div class="rcs">${k.filter(x=>x[0]<=L).length} of ${k.length} online</div></div></div>${k.map(x=>`<div class="rrow${x[0]<=L?'':' off'}"><i class="dt${x[0]<=L?' on':''}"></i><b>${esc(x[1])}</b>${x[0]<=L?'':`<span class="bdg">Lv ${x[0]}</span>`}</div>`).join('')}</div>`;}).join('');
   next.sort((a,b)=>a[0]-b[0]);
   $('buffh').textContent=next.length?'Next: '+next.slice(0,2).map(x=>x[1].replace(/ \(.*/,'')+' at '+x[0]).join(', '):'Everything is online';
 }
@@ -665,8 +727,8 @@ function renderRoute(){
   $('route').innerHTML=ROUTE.filter(s=>s.at>=c[0]&&s.at<=c[1]).map(s=>{
     const inr=L>=s.lv[0]&&L<=s.lv[1],dn=done.has(s.id),op=openS.has(s.id)!==(inr&&!dn);
     return `<div class="step ${s.t}${dn?' done':''}${inr&&!dn?' now':''}" data-st="${s.id}">
-      <span>${ico(s.ic,s.n.slice(0,2),48,s.t==='d'?'#7a2f1f':'#3a5a3a',s.t==='m'?'round':'')}</span>
-      <div style="min-width:0"><div class="who"><span class="lvp">${s.lv[0]===s.lv[1]?'Lv '+s.lv[0]:'Lv '+s.lv[0]+'–'+s.lv[1]}</span><span class="rolet ${s.t==='d'?'D':s.t==='z'?'H':'T'}">${s.t==='d'?'Dungeon':s.t==='z'?'Zone':'Milestone'}</span>${s.f?'<span class="tag">New in Forever</span>':''}${inr&&!dn?'<span class="tag own">In range now</span>':''}</div>
+      <span class="node${dn?' mx':inr?' on':''}">${ico(s.ic,s.n.slice(0,2),48,s.t==='d'?'#7a2f1f':'#3a5a3a')}<b class="nb">${s.lv[0]===s.lv[1]?s.lv[0]:s.lv[0]+'–'+s.lv[1]}</b></span>
+      <div style="min-width:0"><div class="who"><span class="rolet ${s.t==='d'?'D':s.t==='z'?'H':'T'}">${s.t==='d'?'Dungeon':s.t==='z'?'Zone':'Milestone'}</span>${s.f?'<span class="tag">New in Forever</span>':''}${inr&&!dn?'<span class="tag own">In range now</span>':''}</div>
         <div class="sname">${esc(s.n)}</div><div class="sw">${esc(s.w)}</div>
         ${op?`<ul class="ql">${s.q.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`:`<div class="hint" style="margin-top:4px">${s.q.length} quest note${s.q.length>1?'s':''} · click to open</div>`}</div>
       <button type="button" class="pill ${dn?'':'plain '}sm" data-dn="${s.id}">${dn?'Done':'Mark done'}</button></div>`;}).join('');
@@ -698,7 +760,7 @@ async function syncTiers(){
 }
 const LS='loot-goblinok-v2';
 function setTab(t){if(!['crew','profs','loot','route'].includes(t))t='crew';document.body.dataset.tab=t;document.querySelectorAll('#tabs button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.tab===t));try{localStorage.setItem('lg-tab',t);}catch(e){}}
-{const TABI={crew:'achievement_guildperk_everybodysfriend',profs:'trade_blacksmithing',loot:'inv_box_01',route:'inv_misc_map_01'};document.querySelectorAll('#tabs button').forEach(b=>b.insertAdjacentHTML('afterbegin',ico(TABI[b.dataset.tab],'',34,'#555')));}
+{const TABI={crew:'achievement_guildperk_everybodysfriend',profs:'trade_blacksmithing',loot:'inv_box_01',route:'inv_misc_map_01'};document.querySelectorAll('#tabs button').forEach(b=>b.insertAdjacentHTML('afterbegin',ico(TABI[b.dataset.tab],'',26,'#555')));$('heroico').innerHTML=ico(TABI.crew,'',54,'#555','round');$('routeico').innerHTML=ico(TABI.route,'',54,'#555','round');document.querySelectorAll('[data-ic]').forEach(e=>e.innerHTML=ico(e.dataset.ic,'',30,'#555'));}
 {let t='crew';try{t=localStorage.getItem('lg-tab')||'crew';}catch(e){}setTab(t);} let docRef=null,writable=true,writing=false,dirty=false,timer=0;
 function setSync(m){$('sync').textContent={shared:'Shared roster. Changes sync to everyone who can edit.',readonly:'Showing the shared roster. Your changes stay on this device.',local:'Saved on this device.'}[m];}
 function enc(o){return btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
@@ -721,7 +783,7 @@ document.addEventListener('change',ev=>{const el=ev.target;
   if(el.dataset.p!==undefined){state.slots[+el.dataset.i].profs[+el.dataset.p]=el.value;changed(false);return;}
   if(el.dataset.t){ if(el.value===BY[el.dataset.t].t) delete state.tiers[el.dataset.t]; else state.tiers[el.dataset.t]=el.value; changed(false); } });
 document.addEventListener('click',ev=>{
-  const tb=ev.target.closest('[data-tab]'); if(tb){setTab(tb.dataset.tab); if(!matchMedia('(min-width:900px)').matches) document.querySelector('.sec.'+tb.dataset.tab).scrollIntoView({behavior:'smooth',block:'start'}); return;}
+  const tb=ev.target.closest('#tabs [data-tab]'); if(tb){setTab(tb.dataset.tab); if(!matchMedia('(min-width:900px)').matches) document.querySelector('.sec.'+tb.dataset.tab).scrollIntoView({behavior:'smooth',block:'start'}); return;}
   const b=ev.target.closest('.ib'); tip.hidden=true;
   if(b){const s=state.slots[+b.dataset.i],k=b.dataset.k,v=b.dataset.v; s[k]=s[k]===v?'':v;
     if(k==='cls'){ s.spec=''; if(s.race&&s.cls&&!RC[state.faction][s.race].includes(s.cls)) s.race=''; }
